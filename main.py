@@ -1,3 +1,6 @@
+# written by SD
+# twitter.com/ciphersuites
+
 from classes.adidas_monitor import AdidasMonitor
 import json
 

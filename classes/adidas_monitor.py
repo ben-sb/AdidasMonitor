@@ -185,7 +185,7 @@ class AdidasMonitor():
 
     def send_text(self):
         try:
-            self.sms_client.messages.create(to=self.client_number, from_=self.twilio_number, body="%s on Adidas %s"%(self.pid, self.region.upper()))
+            self.sms_client.messages.create(to=self.client_number, from_=self.twilio_number, body="%s on Adidas %s\n%s"%(self.pid, self.region.upper(), self.get_wishlist_url()))
             self.log("Sent text message")
         except:
             self.log("Error sending text message")
