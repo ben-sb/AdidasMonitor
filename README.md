@@ -1,6 +1,6 @@
 # AdidasMonitor
 
-Requires Python 3.6 or above
+Python program to monitor the availability status of Adidas products. Supports Adidas UK, US, CA. Requires Python 3.6 or above
 
 ## SMS setup (optional)
 * Signup for free trial account https://www.twilio.com/try-twilio
@@ -22,5 +22,5 @@ Requires Python 3.6 or above
 ## To Run
 * Install requirements in requirements.txt
 * Edit config.json
-* Put proxies in proxies.txt
+* Put proxies in proxies.txt or clear file to run without proxies
 * Run main.py
