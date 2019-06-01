@@ -25,6 +25,6 @@ except FileNotFoundError:
 except json.decoder.JSONDecodeError:
     print("FATAL ERROR: Could not read config file, invalid JSON")
 
-
+# case where we don't know the cause of the exception
 except Exception as e:
     print("Unknown error: " + str(e))
