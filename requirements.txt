@@ -1,2 +1,3 @@
+twilio==6.27.1
 requests==2.20.1
 dhooks==1.1.0

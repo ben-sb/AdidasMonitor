@@ -1,7 +1,14 @@
 {
   "webhook": "",
   "refresh_time": 20,
-  "pids" : [
-    "FU9007"
-  ]
+  "products" : [
+    {
+      "region": "uk",
+      "pid": "F36153"
+    }
+  ],
+  "sms_sid": null,
+  "sms_auth": null,
+  "twilio_number": null,
+  "your_number": null
 }

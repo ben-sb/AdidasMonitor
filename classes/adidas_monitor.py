@@ -3,12 +3,14 @@ import json
 import time
 from threading import Thread
 from dhooks import Webhook, Embed
+from twilio.rest import Client
 import random
 from datetime import datetime
 
 
 class AdidasMonitor():
-    def __init__(self, pid, webhook, refresh_time):
+    def __init__(self, region, pid, webhook, refresh_time, sms_sid=None, sms_auth=None, twilio_number=None, client_number=None):
+        self.region = region.lower()
         self.pid = pid
         self.webhook = webhook
         self.refresh_time = refresh_time
@@ -22,6 +24,14 @@ class AdidasMonitor():
                 'upgrade-insecure-requests': '1',
                 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
             }
+
+        if sms_sid != None and sms_auth != None:
+            self.sms_client = Client(sms_sid, sms_auth)
+            self.twilio_number = twilio_number
+            self.client_number = client_number
+        else:
+            self.sms_client = None
+
         self.load_proxies()
 
 
@@ -50,6 +60,20 @@ class AdidasMonitor():
         return proxies
 
 
+    def get_stock_url(self):
+        if self.region == "uk":
+            domain = ".co.uk"
+        elif self.region == "us":
+            domain = ".com"
+        elif self.region == "ca":
+            domain = ".ca"
+        else:
+            self.log("Region not recognized")
+            exit(1)
+
+        return 'https://www.adidas{}/api/products/{}/availability'.format(domain, self.pid)
+
+
     def start(self):
         t = Thread(target=self.monitor_thread)
         t.start()
@@ -57,7 +81,7 @@ class AdidasMonitor():
 
     def monitor_thread(self):
         while True:
-            stock_url = 'https://www.adidas.co.uk/api/products/{}/availability'.format(self.pid)
+            stock_url = self.get_stock_url()
 
             try:
                 if len(self.proxies) > 0:
@@ -72,6 +96,9 @@ class AdidasMonitor():
                         if self.count > 0:
                             self.log("Detected status updated to %s" % self.latest_status)
                             self.send_to_discord()
+                            if self.sms_client != None:
+                                self.send_text()
+
                         else:
                             self.log("Loaded initial status as %s"%self.latest_status)
 
@@ -92,9 +119,11 @@ class AdidasMonitor():
 
     def send_to_discord(self):
         hook = Webhook(self.webhook)
+        hook.username = "SD Adidas Monitor"
+        hook.avatar_url = "https://pbs.twimg.com/profile_images/1001585704303030273/SNhhIYL8_400x400.jpg"
 
         embed = Embed(
-            description='Status update on %s' % self.pid,
+            description='Status update on %s on Adidas %s'%(self.pid, self.region.upper()),
             color=0x1e0f3,
             timestamp='now'
         )
@@ -103,6 +132,14 @@ class AdidasMonitor():
         embed.set_footer(text='SD Adidas Monitor', icon_url='https://i.imgur.com/ceVbiGI.png')
         hook.send(embed=embed)
         self.log("Posted status update to Discord")
+
+
+    def send_text(self):
+        try:
+            self.sms_client.messages.create(to=self.client_number,from_=self.twilio_number,body="Status of %s changed to %s on Adidas %s"%(self.pid, self.latest_status, self.region.upper()))
+            self.log("Sent text message")
+        except:
+            self.log("Error sending text message")
 
 
 

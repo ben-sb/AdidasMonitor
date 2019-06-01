@@ -6,10 +6,15 @@ try:
 
     webhook = config['webhook']
     refresh_time = config['refresh_time']
-    pids = config['pids']
+    products = config['products']
 
-    for pid in pids:
-        monitor = AdidasMonitor(pid, webhook, refresh_time)
+    sms_sid = config['sms_sid']
+    sms_auth = config['sms_auth']
+    twilio_number = config['twilio_number']
+    client_number = config['your_number']
+
+    for product in products:
+        monitor = AdidasMonitor(product['region'], product['pid'], webhook, refresh_time, sms_sid, sms_auth, twilio_number, client_number)
         monitor.start()
 
 # case where config file is missing
