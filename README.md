@@ -2,7 +2,7 @@
 
 Requires Python 3.6 or above
 
-## SMS setup
+## SMS setup (optional)
 * Signup for free trial account https://www.twilio.com/try-twilio
 * Verify your account with the phone number you want to use
 * Get a free trial number
@@ -13,10 +13,10 @@ Requires Python 3.6 or above
 * webhook - your Discord webhook 
 * refresh_time - how often to refresh (in seconds)
 * products - list of JSON objects to monitor, each with region and PID (note only Adidas UK, US and CA are supported currently)
-* sms_sid - your Twilio SID
-* sms_auth - your Twilio auth token
-* twilio_number - the phone number you got from Twilio
-* your_number - your phone number
+* sms_sid - your Twilio SID (leave as null if not using SMS support)
+* sms_auth - your Twilio auth token (leave as null if not using SMS support)
+* twilio_number - the phone number you got from Twilio (leave as null if not using SMS support)
+* your_number - your phone number (leave as null if not using SMS support)
 
 
 ## To Run
