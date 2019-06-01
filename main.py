@@ -16,6 +16,7 @@ try:
     twilio_number = config['twilio_number']
     client_number = config['your_number']
 
+    print("Loaded %d proxies"%len(open('proxies.txt').readlines()))
     for product in products:
         monitor = AdidasMonitor(product['region'], product['pid'], webhook, refresh_time, sms_sid, sms_auth, twilio_number, client_number)
         monitor.start()

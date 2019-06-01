@@ -41,7 +41,6 @@ class AdidasMonitor():
 
     def load_proxies(self):
         self.proxies = open('proxies.txt').readlines()
-        self.log("Loaded %d proxies"%len(self.proxies))
 
 
     def format_proxy(self, proxy):
@@ -102,9 +101,9 @@ class AdidasMonitor():
 
             try:
                 if len(self.proxies) > 0:
-                    stock = json.loads(requests.get(stock_url, headers=self.headers).text, proxies=self.format_proxy(random.choice(self.proxies)))
+                    stock = json.loads(requests.get(stock_url, headers=self.headers, proxies=self.format_proxy(random.choice(self.proxies)), timeout=5000).text)
                 else:
-                    stock = json.loads(requests.get(stock_url, headers=self.headers).text)
+                    stock = json.loads(requests.get(stock_url, headers=self.headers, timeout=5000).text)
 
                 if 'availability_status' in stock:
                     status = stock['availability_status']
@@ -149,8 +148,8 @@ class AdidasMonitor():
                         self.log("Product not loaded")
                     else:
                         self.log("No updates detected")
-            except:
-                self.log("Error loading stock")
+            except Exception as e:
+                self.log("Error loading stock: " + str(e))
 
 
             self.count += 1
