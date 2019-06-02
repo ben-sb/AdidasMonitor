@@ -89,7 +89,7 @@ class AdidasMonitor():
             self.domain = ".fr"
             self.country = "FR"
         elif self.region == "es":
-            self.domain = ".ES"
+            self.domain = ".es"
             self.country = "ES"
         elif self.region == "be":
             self.domain = ".be"
