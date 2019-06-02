@@ -1,5 +1,7 @@
 {
-  "webhook": "",
+  "webhooks": [
+    ""
+  ],
   "refresh_time": 20,
   "products" : [
     {

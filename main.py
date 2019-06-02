@@ -7,7 +7,7 @@ import json
 try:
     config = json.load(open('config.json'))
 
-    webhook = config['webhook']
+    webhooks = config['webhooks']
     refresh_time = config['refresh_time']
     products = config['products']
 
@@ -18,7 +18,7 @@ try:
 
     print("Loaded %d proxies"%len(open('proxies.txt').readlines()))
     for product in products:
-        monitor = AdidasMonitor(product['region'], product['pid'], webhook, refresh_time, sms_sid, sms_auth, twilio_number, client_number)
+        monitor = AdidasMonitor(product['region'], product['pid'], webhooks, refresh_time, sms_sid, sms_auth, twilio_number, client_number)
         monitor.start()
 
 # case where config file is missing
