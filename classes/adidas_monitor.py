@@ -66,6 +66,10 @@ class AdidasMonitor():
             domain = ".com"
         elif self.region == "ca":
             domain = ".ca"
+        elif self.region == "au":
+            domain = ".com.au"
+        elif self.region == "nz":
+            domain = ".co.nz"
         else:
             self.log("Region not recognized")
             exit(1)
@@ -83,6 +87,12 @@ class AdidasMonitor():
         elif self.region == "ca":
             domain = ".ca"
             country = "CA"
+        elif self.region == "au":
+            domain = ".com.au"
+            country = "AU"
+        elif self.region == "nz":
+            domain = ".co.nz"
+            country = "NZ"
         else:
             self.log("Region not recognized")
             exit(1)
