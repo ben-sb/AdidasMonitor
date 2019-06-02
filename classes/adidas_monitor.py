@@ -76,6 +76,24 @@ class AdidasMonitor():
         elif self.region == "nz":
             self.domain = ".co.nz"
             self.country = "NZ"
+        elif self.region == "it":
+            self.domain = ".it"
+            self.country = "IT"
+        elif self.region == "cz":
+            self.domain = ".cz"
+            self.country = "CZ"
+        elif self.region == "DK":
+            self.domain = ".dk"
+            self.country = "DK"
+        elif self.region == "fr":
+            self.domain = ".fr"
+            self.country = "FR"
+        elif self.region == "es":
+            self.domain = ".ES"
+            self.country = "ES"
+        elif self.region == "be":
+            self.domain = ".be"
+            self.country = "BE"
         elif self.region == "ru":
             self.domain = ".ru"
             self.country = "RU"
@@ -108,7 +126,7 @@ class AdidasMonitor():
 
 
     def get_wishlist_url(self):
-        return "https://www.adidas{}/on/demandware.store/Sites-adidas-{}-Site/en_{}/Wishlist-GetColorVariation?cid={}".format(self.domain, self.country, self.country, self.pid)
+        return "https://www.adidas{}/on/demandware.store/Sites-adidas-{}-Site/-/Wishlist-GetColorVariation?cid={}".format(self.domain, self.country, self.pid)
 
 
     def start(self):
@@ -170,7 +188,7 @@ class AdidasMonitor():
                     else:
                         self.log("No updates detected")
             except Exception as e:
-                self.log("Error loading stock: " + str(e))
+                self.log("Error: " + str(e))
 
 
             self.count += 1
