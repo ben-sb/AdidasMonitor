@@ -73,6 +73,9 @@ class AdidasMonitor():
         elif self.region == "de":
             self.domain = ".de"
             self.country = "DE"
+        elif self.region == "nz":
+            self.domain = ".co.nz"
+            self.country = "NZ"
         elif self.region == "ru":
             self.domain = ".ru"
             self.country = "RU"
