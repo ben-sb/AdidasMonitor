@@ -24,7 +24,7 @@ Requires Python 3.6 or above
 **Make sure to include the country code for all phone numbers**
 
 Example config.json
-![Example config](https://i.imgur.com/CxGdfor.png)
+![Example config](https://i.imgur.com/CxGdfor.png | width=50)
 
 
 ## To Run
