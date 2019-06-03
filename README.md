@@ -28,5 +28,5 @@ Requires Python 3.6 or above
 * Edit config.json
 * Put proxies in proxies.txt or clear file to run without proxies
 * Run main.py:
-** Windows: python main.py
-** Mac and Linux: python3 main.py
+- Windows: python main.py
+- Mac and Linux: python3 main.py
