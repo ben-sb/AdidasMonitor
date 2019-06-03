@@ -23,7 +23,7 @@ Requires Python 3.6 or above
 **Everything should be a string (surrounded by ") other than refresh_time**
 **Make sure to include the country code for all phone numbers**
 
-![Example config](https://imgur.com/a/EEoi4GR)
+![Example config](https://imgur.com/CxGdfor)
 
 
 ## To Run
