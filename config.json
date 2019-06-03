@@ -12,5 +12,7 @@
   "sms_sid": null,
   "sms_auth": null,
   "twilio_number": null,
-  "your_number": null
+  "your_numbers": [
+    ""
+  ]
 }
