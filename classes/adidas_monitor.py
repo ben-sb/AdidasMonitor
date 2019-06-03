@@ -8,7 +8,7 @@ import random
 from datetime import datetime
 
 class AdidasMonitor():
-    def __init__(self, region, pid, webhooks, refresh_time, sms_sid=None, sms_auth=None, twilio_number=None, client_number=None):
+    def __init__(self, region, pid, webhooks, refresh_time, sms_sid=None, sms_auth=None, twilio_number=None, client_numbers=None):
         self.region = region.lower()
         self.pid = pid
         self.webhooks = webhooks
@@ -28,7 +28,7 @@ class AdidasMonitor():
         if sms_sid != None and sms_auth != None:
             self.sms_client = Client(sms_sid, sms_auth)
             self.twilio_number = twilio_number
-            self.client_number = client_number
+            self.client_numbers = client_numbers
         else:
             self.sms_client = None
 
@@ -82,7 +82,7 @@ class AdidasMonitor():
         elif self.region == "cz":
             self.domain = ".cz"
             self.country = "CZ"
-        elif self.region == "DK":
+        elif self.region == "dk":
             self.domain = ".dk"
             self.country = "DK"
         elif self.region == "fr":
@@ -94,6 +94,18 @@ class AdidasMonitor():
         elif self.region == "be":
             self.domain = ".be"
             self.country = "BE"
+        elif self.region == "ch":
+            self.domain = ".ch"
+            self.country = "CH"
+        elif self.region == "my":
+            self.domain = ".com.my"
+            self.country = "MY"
+        elif self.region == "br":
+            self.domain = ".br"
+            self.country = "BR"
+        elif self.region == "sg":
+            self.domain = ".com.sg"
+            self.country = "SG"
         elif self.region == "ru":
             self.domain = ".ru"
             self.country = "RU"
@@ -218,17 +230,20 @@ class AdidasMonitor():
 
         # send the embed to each webhook
         for webhook in self.webhooks:
-            hook = Webhook(webhook)
-            hook.username = "SD Adidas Monitor"
-            hook.avatar_url = "https://pbs.twimg.com/profile_images/1001585704303030273/SNhhIYL8_400x400.jpg"
-            hook.send(embed=embed)
-
-        self.log("Posted status update to Discord")
+            try:
+                hook = Webhook(webhook)
+                hook.username = "SD Adidas Monitor"
+                hook.avatar_url = "https://pbs.twimg.com/profile_images/1001585704303030273/SNhhIYL8_400x400.jpg"
+                hook.send(embed=embed)
+                self.log("Posted status update to Discord webhook {}".format(webhook))
+            except:
+                self.log("Error sending to Discord webhook {}".format(webhook))
 
 
     def send_text(self):
-        try:
-            self.sms_client.messages.create(to=self.client_number, from_=self.twilio_number, body="%s on Adidas %s\n%s"%(self.pid, self.region.upper(), self.get_wishlist_url()))
-            self.log("Sent text message")
-        except:
-            self.log("Error sending text message")
+        for client_number in self.client_numbers:
+            try:
+                self.sms_client.messages.create(to=client_number, from_=self.twilio_number, body="%s on Adidas %s\n%s"%(self.pid, self.region.upper(), self.get_wishlist_url()))
+                self.log("Sent text message to {}".format(client_number))
+            except:
+                self.log("Error sending text message to {}".format(client_number))

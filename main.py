@@ -14,7 +14,7 @@ try:
     sms_sid = config['sms_sid']
     sms_auth = config['sms_auth']
     twilio_number = config['twilio_number']
-    client_number = config['your_number']
+    client_number = config['your_numbers']
 
     print("Loaded %d proxies"%len(open('proxies.txt').readlines()))
     for product in products:
