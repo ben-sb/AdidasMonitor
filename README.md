@@ -24,6 +24,7 @@ Requires Python 3.6 or above
 
 
 ## To Run
+* Download and run the appropriate Python installer from here https://www.python.org/downloads/release/python-367/ (skip this step if you already have Python 3.6 installed)
 * Install requirements in requirements.txt using one of the following commands
   - Windows: pip install -r requirements.txt
   - Mac and Linux: python3 -m pip install -r requirements.txt
