@@ -23,7 +23,9 @@ Requires Python 3.6 or above
 **Everything should be a string (surrounded by ") other than refresh_time**
 **Make sure to include the country code for all phone numbers**
 
+<p>
 Example config.json
+  </p>
 <img src="https://i.imgur.com/CxGdfor.png" width="50%" height="50%">
                                                              
 
