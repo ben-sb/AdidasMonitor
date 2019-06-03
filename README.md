@@ -23,6 +23,8 @@ Requires Python 3.6 or above
 **Everything should be a string (surrounded by ") other than refresh_time**
 **Make sure to include the country code for all phone numbers**
 
+![Example config](https://imgur.com/a/EEoi4GR)
+
 
 ## To Run
 * Download and run the appropriate Python installer from here https://www.python.org/downloads/release/python-367/ (skip this step if you already have Python 3.6 installed)
