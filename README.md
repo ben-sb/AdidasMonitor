@@ -1,7 +1,7 @@
 # AdidasMonitor
 
 Python program to monitor the availability status of Adidas products. 
-Supports Adidas UK, US, CA, AU, NL, DE, NZ, IT, CZ, DK, FR, ES, BE, RU.
+Supports Adidas UK, US, CA, AU, NL, DE, NZ, IT, CZ, DK, FR, ES, BE, CH, MY, BR, SG, RU.
 Requires Python 3.6 or above
 
 ## SMS setup (optional)
