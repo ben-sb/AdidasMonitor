@@ -23,6 +23,7 @@ Requires Python 3.6 or above
 **Everything should be a string (surrounded by ") other than refresh_time**
 **Make sure to include the country code for all phone numbers**
 
+Example config.json
 ![Example config](https://i.imgur.com/CxGdfor.png)
 
 
