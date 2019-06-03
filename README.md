@@ -12,13 +12,15 @@ Requires Python 3.6 or above
 
 
 ## Config
-* webhook - your Discord webhook 
+* webhooks - list of your Discord webhooks (as strings) 
 * refresh_time - how often to refresh (in seconds)
 * products - list of JSON objects to monitor, each with region and PID (supported regions are listed above)
 * sms_sid - your Twilio SID **(leave as null if not using SMS support)**
 * sms_auth - your Twilio auth token **(leave as null if not using SMS support)**
 * twilio_number - the phone number you got from Twilio **(leave as null if not using SMS support)**
-* your_number - your phone number **(leave as null if not using SMS support)**
+* your_numbers - list of your phone numbers (as strings) **(leave as null if not using SMS support)**
+
+**Everything should be a string (surrounded by ") other than refresh_time**
 
 
 ## To Run
