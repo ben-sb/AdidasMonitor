@@ -24,9 +24,11 @@ Requires Python 3.6 or above
 
 
 ## To Run
-* Install requirements in requirements.txt
+* Install requirements in requirements.txt using one of the following commands
+  - Windows: pip install -r requirements.txt
+  - Mac and Linux: python3 -m pip install -r requirements.txt
 * Edit config.json
 * Put proxies in proxies.txt or clear file to run without proxies
-* Run main.py:
+* Run main.py using using one of the following commands
   - Windows: python main.py
   - Mac and Linux: python3 main.py
