@@ -21,6 +21,7 @@ Requires Python 3.6 or above
 * your_numbers - list of your phone numbers (as strings) **(leave as null if not using SMS support)**
 
 **Everything should be a string (surrounded by ") other than refresh_time**
+**Make sure to include the country code for all phone numbers**
 
 
 ## To Run
